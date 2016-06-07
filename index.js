@@ -6,7 +6,11 @@ var extend = require('util')._extend;
 var path = require('path');
 
 function handlebars(data, opts) {
-
+	// If the `data` parameter is a String, then treat it as a JSON file.
+ 	if (typeof data === 'string') {
+ 		data = JSON.parse(fs.readFileSync(data));
+ 	}
+ 	
 	var options = opts || {};
 	    
 	//Go through a partials object
